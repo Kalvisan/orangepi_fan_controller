@@ -1,6 +1,6 @@
 # Orange Pi CPU controll script
 
-### Setup script
+### Setup WiringOP
 First of all we need to install WiringOP command `gpio`. For controlling Orange PI build in GPIO pins.
 
 WiringOP installation you can find here - https://github.com/zhaolei/WiringOP#installation
@@ -15,7 +15,7 @@ Installing WiringOP:
 
 `sudo ./build`
 
-
+### Setup script
 For me script is inside `/root` directory. And script file name is `fan-controller.sh`.
 
 First step is creating script file:
