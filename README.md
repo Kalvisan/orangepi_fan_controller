@@ -37,4 +37,5 @@ Now script will execute every 2 minutes and run our new created file `/root/fan-
 ### For more information
 
 Information about `crontab` - http://www.adminschoice.com/crontab-quick-reference
+
 Information about `gpio` - https://github.com/zhaolei/WiringOP
