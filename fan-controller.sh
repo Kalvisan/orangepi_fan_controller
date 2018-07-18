@@ -1,7 +1,7 @@
 #!/bin/sh
 
 timestamp() {
-        date +”%Y-%m-%d %T ”
+        date +"[%Y-%m-%d %T] "
 }
 
 # Set CPU temperature then fan should turn on
@@ -14,6 +14,11 @@ PIN=9
 LOGDIR=”/var/log/fan.log”
 
 # Get CPU temperature
+# You can use alternative files:
+#   /sys/devices/virtual/thermal/thermal_zone0/temp
+#   /sys/devices/virtual/thermal/thermal_zone1/temp
+#   /sys/class/thermal/thermal_zone0/temp
+#   /sys/class/thermal/thermal_zone1/temp
 TEMP=$(cat /sys/devices/virtual/thermal/thermal_zone1/temp)
 
 # Set pin as output
@@ -32,10 +37,10 @@ fi
 # Do the simple magic
 if [ $TEMP -ge $VALUE ] && [ $STATUS -eq 0 ]
 then
-        echo `timestamp` "[ON] Fan started at $temperature C " >> $LOGDIR
         gpio write $PIN 0
+        echo `timestamp` "[ON] Fan started at $temperature C " >> $LOGDIR
 elif [ $TEMP -le $VALUE ] && [ $STATUS -eq 1 ]
 then
-        echo `timestamp` "[OFF] Fan stopped at $temperature C " >> $LOGDIR
         gpio write $PIN 1
+        echo `timestamp` "[OFF] Fan stopped at $temperature C " >> $LOGDIR
 fi
