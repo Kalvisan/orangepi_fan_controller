@@ -38,9 +38,9 @@ fi
 if [ $TEMP -ge $VALUE ] && [ $STATUS -eq 0 ]
 then
         gpio write $PIN 0
-        echo `timestamp` "[ON] Fan started at $temperature C " >> $LOGDIR
+        echo `timestamp` "[ON] Fan started at $TEMP°C" >> $LOGDIR
 elif [ $TEMP -le $VALUE ] && [ $STATUS -eq 1 ]
 then
         gpio write $PIN 1
-        echo `timestamp` "[OFF] Fan stopped at $temperature C " >> $LOGDIR
+        echo `timestamp` "[OFF] Fan stopped at $TEMP°C" >> $LOGDIR
 fi
